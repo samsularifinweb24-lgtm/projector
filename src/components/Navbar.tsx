@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes, FaSun, FaMoon, FaSearch } from "react-icons/fa";
 
+
+
 // ===== Navbar =====
 export function Navbar({ searchText, setSearchText }: { searchText: string; setSearchText: (val: string) => void }) {
   const [open, setOpen] = useState(false);
@@ -132,4 +134,6 @@ export default function App() {
     </>
   );
 }
+
+
 

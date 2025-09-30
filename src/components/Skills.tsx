@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes, FaSun, FaMoon, FaSearch, FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
 
 // ================= Navbar =================
-export function Navbar() {
+export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
 

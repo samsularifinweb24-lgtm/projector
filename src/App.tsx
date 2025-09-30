@@ -3,11 +3,16 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
-// import Skills from "./components/Skills";
-import { Skills } from "d:/pogect/src/components/Skills";
-
 import Projects from "./components/Projects";
 import Contact from "./components/contact";
+import  Skills  from "./components/Skills";
+
+
+
+
+
+
+
 
 
 export default function App() {
@@ -17,9 +22,12 @@ export default function App() {
       <Hero />
       <About/>
       <About />
-      <Skills />
+      <Skills/>
       <Projects />
       <Contact />
+      
+     
+    
     </div>
   );
 }

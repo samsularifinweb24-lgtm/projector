@@ -13,11 +13,11 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
-      alert("সব ফিল্ড পূরণ করুন।");
+      alert("");
       return;
     }
     console.log(formData);
-    alert("মেসেজ সফলভাবে পাঠানো হয়েছে!");
+    alert("");
     setFormData({ name: "", email: "", message: "" });
   };
 

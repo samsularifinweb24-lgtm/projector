@@ -100,13 +100,17 @@ export function Hero() {
       ))}
 
       <motion.img
-        src="/public/myphoto.jpg"
+        src="/public/sohan.png"
         alt="Profile"
         className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full border-4 border-blue-500 shadow-xl mb-4 sm:mb-6 object-cover relative z-10"
         initial={{ opacity: 0, scale: 0.7 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1 }}
       />
+
+
+
+   
 
       <motion.h1
         initial={{ opacity: 0, y: 30 }}
@@ -134,6 +138,11 @@ export function Hero() {
     </section>
   );
 }
+
+
+
+
+
 
 // ================= Skills =================
 export function Skills() {

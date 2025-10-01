@@ -69,7 +69,7 @@ export default function About() {
         {/* 👤 Profile Image */}
         <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-blue-500 shadow-lg flex-shrink-0">
           <img
-            src="/public/sohan4.jpg" 
+            src="/public/sohan5.jpg" 
             alt="Profile"
             className="w-full h-full object-cover"
           />

@@ -1,124 +1,323 @@
 
 
-import { motion } from "framer-motion";
-import { useState } from "react";
+// import { useState, useEffect, type JSX } from "react";
+// import { motion } from "framer-motion";
+// import { FaReact, FaJsSquare, FaNodeJs, FaCss3Alt } from "react-icons/fa";
 
-export default function Contact() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+// interface FormData {
+//   name: string;
+//   email: string;
+//   message: string;
+// }
+
+// export default function Contact(): JSX.Element {
+//   const [formData, setFormData] = useState<FormData>({ name: "", email: "", message: "" });
+//   const [success, setSuccess] = useState("");
+//   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+
+//   // Mouse tracking
+//   useEffect(() => {
+//     const handleMouseMove = (e: MouseEvent) => setCursorPos({ x: e.clientX, y: e.clientY });
+//     window.addEventListener("mousemove", handleMouseMove);
+//     return () => window.removeEventListener("mousemove", handleMouseMove);
+//   }, []);
+
+//   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+//     const { name, value } = e.target;
+//     setFormData(prev => ({ ...prev, [name]: value }));
+//   };
+
+//   const handleSubmit = (e: React.FormEvent) => {
+//     e.preventDefault();
+//     if (!formData.name || !formData.email || !formData.message) {
+//       alert("Please fill in all fields.");
+//       return;
+//     }
+//     console.log(formData);
+//     setSuccess("✅ Message sent successfully!");
+//     setFormData({ name: "", email: "", message: "" });
+//     setTimeout(() => setSuccess(""), 4000);
+//   };
+
+//   const stars = Array.from({ length: 30 }, (_, i) => ({
+//     id: i,
+//     x: `${Math.random() * 100}%`,
+//     y: `${Math.random() * 100}%`,
+//     size: Math.random() * 3 + 1,
+//     delay: Math.random() * 2,
+//   }));
+
+//   return (
+//     <section className="relative w-full min-h-screen overflow-hidden">
+//       {/* Dark Gradient Background */}
+//       <motion.div
+//         className="absolute top-0 left-0 w-full h-full"
+//         style={{
+//           background: "linear-gradient(135deg, #0b0b0f, #1f1f2e, #2e2e3e, #4f4f5f)",
+//           backgroundSize: "400% 400%",
+//         }}
+//         animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+//         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+//       />
+
+//       {/* Stars */}
+//       {stars.map(star => (
+//         <motion.div
+//           key={star.id}
+//           className="absolute bg-white rounded-full opacity-40"
+//           style={{ width: star.size, height: star.size, top: star.y, left: star.x }}
+//           animate={{ y: ["0%", "-10%", "0%"] }}
+//           transition={{ duration: 3, repeat: Infinity, delay: star.delay }}
+//         />
+//       ))}
+
+//       {/* Floating Tech Icons */}
+//       {[FaReact, FaJsSquare, FaNodeJs, FaCss3Alt].map((Icon, idx) => (
+//         <motion.div
+//           key={idx}
+//           className="absolute text-white opacity-20"
+//           style={{ top: cursorPos.y + Math.sin(idx) * 50, left: cursorPos.x + Math.cos(idx) * 50 }}
+//           animate={{ rotate: [0, 360] }}
+//           transition={{ repeat: Infinity, duration: 10, ease: "linear", delay: idx * 0.5 }}
+//         >
+//           <Icon size={24} />
+//         </motion.div>
+//       ))}
+
+//       <motion.div className="relative z-10 max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center min-h-screen px-6 md:px-12 gap-12">
+//         {/* Left Text */}
+//         <motion.div className="md:w-1/2 space-y-6 text-center md:text-left">
+//           <motion.h2 className="text-4xl sm:text-5xl font-extrabold text-purple-400" initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 1 }}>
+//             Let’s Connect
+//           </motion.h2>
+//           <motion.p className="text-gray-300 leading-relaxed text-lg" initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 1.2 }}>
+//             I’m always excited to collaborate on amazing web projects. Send a message and let's discuss ideas, build beautiful interfaces, or just say hi!
+//           </motion.p>
+//           <motion.p className="text-purple-300 italic" initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 1.4 }}>
+//             "Fast, accessible, and delightful web apps — crafted with care."
+//           </motion.p>
+//         </motion.div>
+
+//         {/* Right Form */}
+//         <motion.form
+//           onSubmit={handleSubmit}
+//           className="md:w-1/2 bg-black/50 backdrop-blur-md p-8 sm:p-12 rounded-3xl shadow-2xl flex flex-col gap-5 relative overflow-hidden"
+//           initial={{ x: 50, opacity: 0 }}
+//           animate={{ x: 0, opacity: 1 }}
+//           transition={{ duration: 1 }}
+//         >
+//           {( ["name","email"] as const ).map((field) => (
+//             <input
+//               key={field}
+//               name={field}
+//               type={field === "email" ? "email" : "text"}
+//               value={formData[field]}
+//               onChange={handleChange}
+//               placeholder={`Your ${field.charAt(0).toUpperCase() + field.slice(1)}`}
+//               className="w-full px-5 py-3 rounded-xl bg-black/30 placeholder-gray-400 text-white focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
+//               required
+//             />
+//           ))}
+
+//           <textarea
+//             name="message"
+//             value={formData.message}
+//             onChange={handleChange}
+//             placeholder="Your Message"
+//             rows={5}
+//             className="w-full px-5 py-3 rounded-xl bg-black/30 placeholder-gray-400 text-white focus:outline-none focus:ring-2 focus:ring-purple-400 transition resize-none"
+//             required
+//           />
+
+//           <motion.button
+//             type="submit"
+//             className="mt-2 px-6 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 rounded-2xl font-semibold text-white shadow-lg relative overflow-hidden"
+//             whileHover={{ scale: 1.08 }}
+//             whileTap={{ scale: 0.95 }}
+//           >
+//             Send Message
+//           </motion.button>
+
+//           {success && <motion.p className="text-green-400 mt-2 text-sm" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>{success}</motion.p>}
+//         </motion.form>
+//       </motion.div>
+
+//       {/* Footer */}
+//       <motion.div className="mt-16 text-center text-sm text-gray-400 relative z-10" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.5 }}>
+//         © {new Date().getFullYear()} — Built with 💙 by Samsul Arefin Sohan
+//       </motion.div>
+//     </section>
+//   );
+// }
+
+
+import { useState, useEffect, type JSX } from "react";
+import { motion } from "framer-motion";
+import { FaReact, FaJsSquare, FaNodeJs, FaCss3Alt } from "react-icons/fa";
+
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
+export default function Contact(): JSX.Element {
+  const [formData, setFormData] = useState<FormData>({ name: "", email: "", message: "" });
+  const [success, setSuccess] = useState("");
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+
+  // Mouse tracking
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => setCursorPos({ x: e.clientX, y: e.clientY });
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
-      alert("");
+      alert("Please fill in all fields.");
       return;
     }
     console.log(formData);
-    alert("");
+    setSuccess("✅ Message sent successfully!");
     setFormData({ name: "", email: "", message: "" });
+    setTimeout(() => setSuccess(""), 4000);
   };
 
+  const stars = Array.from({ length: 25 }, (_, i) => ({
+    id: i,
+    x: `${Math.random() * 100}%`,
+    y: `${Math.random() * 100}%`,
+    size: Math.random() * 3 + 1,
+    delay: Math.random() * 2,
+  }));
+
   return (
-    <section
-      id="contact"
-      className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 via-blue-900 to-gray-800 text-center overflow-hidden"
-    >
-      {/* Section Title */}
-      <motion.h2
-        className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-blue-400 mb-8"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        Contact Me
-      </motion.h2>
-
-      {/* Form */}
-      <motion.form
-        className="relative w-full max-w-xl mx-auto flex flex-col gap-4 sm:gap-5 bg-white/10 backdrop-blur-md p-6 sm:p-8 rounded-2xl shadow-xl"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        onSubmit={handleSubmit}
-      >
-        <input
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          type="text"
-          placeholder="Your Name"
-          className="w-full px-4 sm:px-5 py-2 sm:py-3 rounded-xl bg-white/20 text-white placeholder-white/60 focus:ring-2 focus:ring-blue-400 focus:outline-none transition"
-          required
-        />
-        <input
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          type="email"
-          placeholder="Your Email"
-          className="w-full px-4 sm:px-5 py-2 sm:py-3 rounded-xl bg-white/20 text-white placeholder-white/60 focus:ring-2 focus:ring-blue-400 focus:outline-none transition"
-          required
-        />
-        <textarea
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          placeholder="Message"
-          rows={5}
-          className="w-full px-4 sm:px-5 py-2 sm:py-3 rounded-xl bg-white/20 text-white placeholder-white/60 focus:ring-2 focus:ring-blue-400 focus:outline-none transition resize-none"
-          required
-        />
-        <motion.button
-          type="submit"
-          className="mt-3 px-6 py-3 sm:py-3 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 rounded-xl font-semibold text-white shadow-lg hover:scale-105 hover:shadow-2xl transition-transform duration-300"
-          whileHover={{ scale: 1.08 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Send Message
-        </motion.button>
-      </motion.form>
-
-      {/* Footer Text */}
+    <section className="relative w-full min-h-screen overflow-hidden bg-black/90 text-white">
+      {/* Animated Gradient Background */}
       <motion.div
-        className="mt-12 sm:mt-16 text-blue-300 text-xs sm:text-sm md:text-base"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2 }}
-      >
-        © 2025 Sohan. Crafted with 💙 using React, Tailwind & Framer Motion.
+        className="absolute top-0 left-0 w-full h-full"
+        style={{
+          background: "linear-gradient(135deg, #0f172a, #1e3a8a, #0f172a, #1e3a8a)",
+          backgroundSize: "400% 400%",
+        }}
+        animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+      />
+
+      {/* Floating Stars */}
+      {stars.map(star => (
+        <motion.div
+          key={star.id}
+          className="absolute bg-white rounded-full opacity-50"
+          style={{ width: star.size, height: star.size, top: star.y, left: star.x }}
+          animate={{ y: ["0%", "-10%", "0%"] }}
+          transition={{ duration: 4, repeat: Infinity, delay: star.delay }}
+        />
+      ))}
+
+      {/* Floating Tech Icons around cursor */}
+      {[FaReact, FaJsSquare, FaNodeJs, FaCss3Alt].map((Icon, idx) => (
+        <motion.div
+          key={idx}
+          className="absolute text-blue-400 opacity-30"
+          style={{
+            top: cursorPos.y + Math.sin(idx) * 50,
+            left: cursorPos.x + Math.cos(idx) * 50,
+          }}
+          animate={{ rotate: [0, 360] }}
+          transition={{ repeat: Infinity, duration: 8, ease: "linear", delay: idx * 0.5 }}
+        >
+          <Icon size={24} />
+        </motion.div>
+      ))}
+
+      <motion.div className="relative z-10 max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center min-h-screen px-6 md:px-12 gap-12">
+        {/* Left Text */}
+        <motion.div className="md:w-1/2 space-y-6 text-center md:text-left">
+          <motion.h2
+            className="text-4xl sm:text-5xl font-extrabold text-blue-400"
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            Let’s Connect
+          </motion.h2>
+          <motion.p
+            className="text-gray-300 leading-relaxed text-lg"
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1.2 }}
+          >
+            I’m always excited to collaborate on amazing web projects. Send a message and let's discuss ideas, build beautiful interfaces, or just say hi!
+          </motion.p>
+        </motion.div>
+
+        {/* Right Form */}
+        <motion.form
+          onSubmit={handleSubmit}
+          className="md:w-1/2 bg-gradient-to-br from-gray-900/80 via-blue-900/70 to-black/80 backdrop-blur-md p-8 sm:p-12 rounded-3xl shadow-2xl flex flex-col gap-5 relative overflow-hidden"
+          initial={{ x: 50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          {(["name", "email"] as (keyof FormData)[]).map((field) => (
+            <input
+              key={field}
+              name={field}
+              type={field === "email" ? "email" : "text"}
+              value={formData[field]}
+              onChange={handleChange}
+              placeholder={`Your ${field.charAt(0).toUpperCase() + field.slice(1)}`}
+              className="w-full px-5 py-3 rounded-xl bg-black/70 placeholder-blue-300 text-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+              required
+            />
+          ))}
+
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Your Message"
+            rows={5}
+            className="w-full px-5 py-3 rounded-xl bg-black/70 placeholder-blue-300 text-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition resize-none"
+            required
+          />
+
+          <motion.button
+            type="submit"
+            className="mt-2 px-6 py-3 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-700 rounded-2xl font-semibold text-white shadow-lg relative overflow-hidden"
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Send Message
+          </motion.button>
+
+          {success && (
+            <motion.p className="text-green-400 mt-2 text-sm" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+              {success}
+            </motion.p>
+          )}
+        </motion.form>
       </motion.div>
 
-      {/* Extra Footer Quote / Description */}
-      <motion.p
-        className="mt-2 sm:mt-4 text-blue-400 text-xs sm:text-sm md:text-base italic"
+      {/* Footer */}
+      <motion.div
+        className="mt-16 text-center text-sm text-gray-400 relative z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
       >
-        "Let’s build something amazing together! Reach out and say hi."
-      </motion.p>
-
-      {/* Optional extra decorative text */}
-      <motion.div
-        className="mt-1 sm:mt-6 text-blue-200 text-xs sm:text-sm md:text-base"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.7 }}
-      >
-        We usually reply within 24 hours.
+        © {new Date().getFullYear()} — Built with 💙 by Samsul Arefin Sohan
       </motion.div>
     </section>
   );
 }
-
-
-
-
-
-
-
 
 
